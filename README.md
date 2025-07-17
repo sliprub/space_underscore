@@ -1,61 +1,103 @@
-# space_underscore
+        ___________
+space_underscore.py
+        ___________
+_ _ _ _ _ _
+DESCRIPTION: A Python utility for batch renaming files with various character transformations.
 
-happuneduchan wen I wnned lll du spaces 2 b underscores.... got carried away with features....
+    This Python script provides actions to modify filenames and directories by applying various transformations 
+    such as:    renaming, 
+                deleting characters, 
+                replacing characters, 
+    and         adding characters between or around groups. 
 
-## What It Does
+        It supports previewing changes, applying them, and undoing them using log files. Transformations are applied to 
+        filenames and directories based on the provided arguments, and changes can be previewed before being executed.
+        
+        The script uses log files to track changes, enabling an undo action that reverts the last renaming operation.
 
-Takes spaces and other characters in filenames and does stuff to them:
-- Replaces spaces with underscores (or any char)
-- Deletes characters you don't want
-- Adds stuff between things
-- Can preview before it happens
-- Can undo if you mess up
+_ _ _ _ _ 
+HAPPUNEDU: 
 
-## How To Use It
+happuneduchan wen I wnned lll du spaces 2 b underscores. den got carried away with features.... hopefully this will have a use...
 
-```bash
-# Basic: spaces to underscores
-python3 space_underscore.py rename ./my_files --space_
+_ _ _ _
+SETUP:
 
-# Preview what will happen
-python3 space_underscore.py preview ./my_files --space_
+    1: Open Terminal in the folder containing space_underscore.py.
+    2: Provide Arguments to the Script: The script expects two required arguments:
 
-# Undo last rename
-python3 space_underscore.py undo ./my_files
-```
+    action: The operation you want to perform (either preview, rename, or undo).
+    directory: The path to the directory where changes will be applied.
 
-## Cool Stuff You Can Do
+        The script expects two required arguments: action and directory.
+        These must be provided when you run it.
 
-```bash
-# Replace spaces with whatever
---space <char>
+Basic syntax for running the script:
 
-# Delete characters
---delete <char>
---delete_multiples a,b,c
+            python3 space_underscore.py <action> <directory> [<transformation_arguments>]
 
-# Replace stuff
---replace_char old,new
+Example:
+    python3 space_underscore.py rename ./my_files --space_
 
-# Add between/around
---add_between group1,group2,char
---add_after group,char
---add_before group,char
-```
+Core Actions
+-----------
+preview : Show changes without applying them
+    python3 space_underscore.py preview /path/to/directory --space_
 
-## Safety First
-- Always `preview` before `rename`
-- Can `undo` the last thing
-- Keeps logs of what it did
+rename  : Apply the transformations
+    python3 space_underscore.py rename /path/to/directory --space_
 
-## Requirements
-- Python 3
-- That's it
+undo    : Revert the last rename operation
+    python3 space_underscore.py undo /path/to/directory
 
-## License
-Apache License 2.0
+Available Transformations
+-----------------------
+--space_                             : Replaces spaces with underscores
+--space <char>                       : Replaces spaces with custom character
+--delete <char>                      : Deletes a specific character
+--delete_multiples <char1,char2,...> : Deletes multiple characters
+--replace_char <old_char>,<new_char> : Replaces one character with another
+--add_between <group1>,<group2>,<char>: Adds character between two groups
+--add_after <group>,<char>          : Adds character after a group
+--add_before <group>,<char>         : Adds character before a group
 
-_Note: The copyright holder reserves the right to release future versions under different license terms._
+Examples
+--------
+Replace spaces with underscores:
+    python3 space_underscore.py rename ./files --space_
 
----
-_originated as space to underscore converter.... now it does way more_
+Delete character 'T':
+    python3 space_underscore.py rename ./files --delete T
+
+Multiple transformations:
+    python3 space_underscore.py rename ./files --space_ --delete T
+
+Log Files
+---------
+The script maintains logs for all operations:
+- rename_log.json: Tracks all renamed files
+- delete_log.json: Tracks deleted characters
+- replace_log.json: Tracks character replacements
+- add_log.json: Tracks character additions
+
+Troubleshooting
+--------------
+1. Permission Issues:
+   - Ensure you have write permissions in the target directory
+   - Run with sudo if needed (careful!)
+
+2. Log File Issues:
+   - Check if log files exist and are writable
+   - Clear log files if they become corrupted
+
+3. Common Errors:
+   - Invalid characters in paths
+   - Missing permissions
+   - File already exists
+
+Notes
+-----
+- Always use 'preview' first to verify changes
+- Undo only works for the most recent operation
+- Multiple transformations are applied in order
+- Backup important files before bulk renaming
