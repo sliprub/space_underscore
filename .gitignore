@@ -1,0 +1,13 @@
+# Python
+*.pyc
+__pycache__/
+
+# Log files
+rename_log.json
+delete_log.json
+replace_log.json
+add_log.json
+*.log
+
+# System files
+.DS_Store
