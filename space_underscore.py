@@ -116,20 +116,14 @@ LOG_FILE = 'rename_log.json'
 def print_logo():
     """Prints a logo for the script."""
     logo = r"""
-|                                    _______________________________  |
-|                                         /      ○      __________    |
-|  ABCD   EFGH   IJKLM  NOPQR   STUVW          ⬭      ⨀_________     
-| X       Y   Z  1   2  3       4         ∅‌                           |
-|  567    89!@   #$%^&  *       ()_+        ◌      ◯                  |
+                                     _______________________________
+|                                         /      ○      __________  
+|  ABCD   EFGH   IJKLM  NOPQR   STUVW          ⬭      ⨀_________
+| X       Y   Z  1   2  3       4         ∅           underscore    
+|  567    89!@   #$%^&  *       ()_+        ◌      ◯                  
 |     ,   .      /   <  >       ?      ⦿       ␀          ⚬      ␀     
-| |}{\    ]      [   "  :';-=   SPACE      ␣         ⊗                   
-|                                                            ␀           
-| U   U  N   N  DDDD   EEEEE  RURR    SLIP  RUBXX  GOO  ©copy  ™ronged
-| U   M  AK  I  S   P  P      P  ⨀   S      C     R  O  T   U  M      
-| U   U  2 ○ ◯  C   D  EGRR   RUFF    SSS ‌‌ ‌‌ ‌‌C     O   O  RRRR  EEEE   |
-| Ū   N  U  BS  U   A  E      R  R       S  C     G   O  A  R  F      |
-| UUUUU  N   N  MDUM   PEEEE  R   R  SLUT   COCKX  GOO   P   E ENiSx  |
-|---------------------------------------------------------------------|
+| |}{\    ]      [   "  :';-=   SPACE      ␣         ⊗   ©copy_™ronged              
+                                                            ␀           
 """
     print(logo)
     print("SPACE_UNDERSCORE ( _)\n")
