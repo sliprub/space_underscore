@@ -29,6 +29,28 @@ The script uses log files to track changes, enabling an undo action that reverts
 
 I wanted all spaces to be underscores...
 
+## Installation
+
+Quick install using terminal:
+```bash
+# Clone the repository
+git clone https://github.com/sliprub/space_underscore.git
+cd space_underscore
+
+# Run installer (optional - sets up alias)
+./install.sh
+```
+
+The installer will:
+- Copy the script to ~/.local/bin
+- Let you choose an alias: `space_` or `space_underscore`
+- Configure your shell automatically
+
+Alternatively, just use the script directly:
+```bash
+python3 space_underscore.py <action> <directory> [options]
+```
+
 ## SETUP
 
 1. Open Terminal in the folder containing space_underscore.py.
