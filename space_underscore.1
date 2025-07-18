@@ -1,0 +1,142 @@
+.\" Manpage for space_underscore
+.\" Contact: space_underscore@example.com
+.TH SPACE_UNDERSCORE 1 "July 2024" "1.0" "space_underscore manual"
+
+.SH NAME
+space_underscore \- batch rename files with character transformations
+
+.SH SYNOPSIS
+.B space_underscore
+.I action directory
+.RI [ transformation_options ]
+
+.SH DESCRIPTION
+.B space_underscore
+is a Python utility for batch renaming files and directories by applying various character transformations. It supports previewing changes before applying them and can undo the last operation using log files.
+
+.SH ACTIONS
+.TP
+.B preview
+Display what changes would be made without actually renaming files
+.TP
+.B rename
+Apply the specified transformations to files and directories
+.TP
+.B undo
+Revert the last rename operation using log files
+
+.SH OPTIONS
+.TP
+.B \-\-space_
+Replace all spaces with underscores
+.TP
+.B \-\-space \fIchar\fR
+Replace all spaces with the specified character
+.TP
+.B \-\-delete \fIchar\fR
+Delete all occurrences of the specified character
+.TP
+.B \-\-delete_multiples \fIchar1,char2,...\fR
+Delete all occurrences of multiple specified characters
+.TP
+.B \-\-replace_char \fIold_char\fR,\fInew_char\fR
+Replace all occurrences of old_char with new_char
+.TP
+.B \-\-add_between \fIgroup1\fR,\fIgroup2\fR,\fIchar\fR
+Add char between group1 and group2
+.TP
+.B \-\-add_after \fIgroup\fR,\fIchar\fR
+Add char after each occurrence of group
+.TP
+.B \-\-add_before \fIgroup\fR,\fIchar\fR
+Add char before each occurrence of group
+
+.SH EXAMPLES
+.PP
+Replace spaces with underscores:
+.RS
+.B space_underscore rename ./files \-\-space_
+.RE
+
+.PP
+Delete the character 'T' from all filenames:
+.RS
+.B space_underscore rename ./files \-\-delete T
+.RE
+
+.PP
+Preview changes before applying:
+.RS
+.B space_underscore preview ./files \-\-space_
+.RE
+
+.PP
+Apply multiple transformations:
+.RS
+.B space_underscore rename ./files \-\-space_ \-\-delete T
+.RE
+
+.PP
+Replace spaces with hyphens:
+.RS
+.B space_underscore rename ./files \-\-space \-
+.RE
+
+.PP
+Undo the last operation:
+.RS
+.B space_underscore undo ./files
+.RE
+
+.SH LOG FILES
+The utility maintains JSON log files to track operations:
+.TP
+.B rename_log.json
+Records all renamed files with original and new names
+.TP
+.B delete_log.json
+Tracks deleted character operations
+.TP
+.B replace_log.json
+Records character replacement operations
+.TP
+.B add_log.json
+Logs character addition operations
+
+.SH EXIT STATUS
+.TP
+.B 0
+Successful operation
+.TP
+.B 1
+General error (permission denied, invalid arguments, etc.)
+.TP
+.B 2
+No changes to apply or preview
+
+.SH NOTES
+.IP \(bu 2
+Always use 'preview' action first to verify changes before renaming
+.IP \(bu 2
+The 'undo' action only reverts the most recent operation
+.IP \(bu 2
+Multiple transformations are applied in the order specified
+.IP \(bu 2
+Back up important files before performing bulk rename operations
+.IP \(bu 2
+The script requires write permissions in the target directory
+
+.SH BUGS
+Report bugs to the project repository.
+
+.SH AUTHOR
+Written by the space_underscore development team.
+
+.SH COPYRIGHT
+Copyright \(co 2024 space_underscore contributors.
+Licensed under the Apache License 2.0.
+
+.SH SEE ALSO
+.BR rename (1),
+.BR mv (1),
+.BR sed (1)
